@@ -1,27 +1,55 @@
-# ConnectNshare
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
+<div style="text-align:center">
 
-## Development server
+<img src="src/assets/images/logo-2.png"/>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Dibrugarh University Notes Sharing cum E-learning Portal
 
-## Code scaffolding
+</div>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+“DU NOTES” is a one-stop portal developed For and By the students of Dibrugarh University(Assam-India).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Find your resources like HandWritten Notes, Question Papers, Sample papers, Practical papers, etc
+- Get answers to your queries
+- Upload your materials to the portal
+- Get Resume tips,find the best e-learning platforms available
+- Connect with professors of Dibrugarh University and share your ideas and discuss
 
-## Running unit tests
+## Use Case 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Screenshots
 
-## Running end-to-end tests
+### Home Page
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+[![home-page.png](https://i.postimg.cc/LsPGBBvb/home-page.png)](https://postimg.cc/mcbdT9vY)
+[![number.png](https://i.postimg.cc/bvLk546D/number.png)](https://postimg.cc/HJcrcv1d)
+[![departments.png](https://i.postimg.cc/qMnmFM2N/departments.png)](https://postimg.cc/tYqtZbSb)
+[![we-offer.png](https://i.postimg.cc/mDtjybb2/we-offer.png)](https://postimg.cc/8JgL1gJq)
 
-## Further help
+### Explore Page(Along With Some Working)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[![explore-gif.gif](https://i.postimg.cc/Kzp0L1BY/explore-gif.gif)](https://postimg.cc/bDb0fN6X)
+
+### Upload Page(Along With Some Working)
+
+[![upload-gif.gif](https://i.postimg.cc/Y2GPYwqC/upload-gif.gif)](https://postimg.cc/K4bQhwM6)
+
+### Gurus Page
+
+[![gurus-2.png](https://i.postimg.cc/KcBNmc8B/gurus-2.png)](https://postimg.cc/Yj2g3HgC)
+
+### E-learning Platforms
+
+[![e-learnings-paltforms.png](https://i.postimg.cc/pdmf4RS9/e-learnings-paltforms.png)](https://postimg.cc/B8GP194s)
+
+### Admin Side (Along With Some Working)
+
+## Functional Description
+
+
+
+
+
+## Future Improvments
+

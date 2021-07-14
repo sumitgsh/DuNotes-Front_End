@@ -1,0 +1,199 @@
+
+<div class="container-fluid academic_info" >
+    <div class="row">
+        <div class="col-md-12 academic_info_content">
+
+            <form #academicInfo="ngForm" (ngSubmit)="onSubmitAcademicInfo(academicInfo)">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>ACADEMIC INFO</h3> 
+                    </div>
+                    <div class="col-md-4 offset-md-4">
+                       
+                    <button  
+                        class="btn btn-success mb-2 float-right"
+                        style="width:70%;"
+                        (click)="onEditInfo(academicInfo)"
+                        *ngIf="edit">Edit Info
+                    </button>  
+
+                     <button type="submit" 
+                        class="btn btn-success mb-2 float-right"
+                        style="width:70%;"
+                        *ngIf="save"
+                        >Save
+                    </button> 
+                        
+                    </div>
+                </div>
+                
+               
+             <div class="academic_info_cont" >
+                 <div class="row" *ngIf="role==='Student'"> 
+                <div class="col-md-3">
+                    <label for="Iname" class="mr-sm-2"><h5>Institute Name:</h5></label>
+                </div>
+                <div class="col-md-9">
+                    <mat-form-field style="width: 100%;">
+                        <input matInput type="text" placeholder="Institute Name"
+                         name="collegeName" 
+                         [(ngModel)]="collegeName"
+                         disabled>
+                      </mat-form-field>
+                </div>
+            </div>
+                
+            <div class="row" *ngIf="role==='Student'">
+                <div class="col-md-3">
+                    <label for="department" class="mr-sm-2"><h5>Department:</h5></label>
+                </div>
+                <div class="col-md-9">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-select [(ngModel)]="departMent" 
+                        name="departMent" placeholder="Plese select your Department" disabled>
+                          <mat-option *ngFor="let department of Departments" [value]="department">
+                            {{department}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                     
+                </div>
+            </div>
+        <div class="row" *ngIf="role==='Student'">
+            <div class="col-md-3">
+                <label for="graduationType" class="mr-sm-2"><h5>Graduation Type:</h5></label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-select [(ngModel)]="degreeType" name="degreeType" placeholder="Plese select your Graduation Type" disabled>
+                      <mat-option *ngFor="let degType of DegreeTypes" [value]="degType">
+                        {{degType}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                 
+            </div>
+        </div>
+        <div class="row"  *ngIf="role==='Student'">
+            <div class="col-md-3">
+                <label for="DegreeName" class="mr-sm-2"><h5>Degree Name</h5></label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-select [(ngModel)]="degreeName" name="degreeName" placeholder="Plese select your Degree" disabled> 
+                      <mat-option *ngFor="let degName of DegreeNames" [value]="degName">
+                        {{degName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                 
+            </div>
+            
+        </div>
+        <div class="row"  *ngIf="role==='Student'">
+            <div class="col-md-3">
+                <label for="currentSemester" class="mr-sm-2"><h5>Current Semester:</h5></label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-select [(ngModel)]="currentSem" name="currentSem" placeholder="Plese select your current Semester" disabled>
+                      <mat-option *ngFor="let sem of Semesters" [value]="sem">
+                        {{sem}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                 
+            </div>
+        </div>
+        <div class="row"  *ngIf="role==='Student'">
+            <div class="col-md-3">
+                <label for="dateofAdm" class="mr-sm-2"><h5>Date of Admission:</h5></label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field style="width: 100%;">
+                    <input matInput type="date" min="2010-01-01" max="2022-12-01"
+                     placeholder="Please provide your Date of Admission."
+                     name="dateOfAdm" 
+                     [(ngModel)]="dateOfAdm"
+                     disabled>
+                  </mat-form-field>
+                 
+            </div>
+        </div>
+        <div class="row" *ngIf="role==='Faculty'">
+            <div class="col-md-3">
+                <label for="description" class="mr-sm-2" style="margin-bottom: .3rem;"><h5>Description:</h5></label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field style="width: 100%;">
+                <textarea matInput
+                name="description"
+                [(ngModel)]="description"
+                 placeholder="Ex. You Are an MBA etc."
+                 disabled></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" *ngIf="role==='Faculty'">
+            <div class="col-md-3">
+                <label for="qualification" class="mr-sm-2"><h5>Qualification:</h5></label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field style="width: 100%;">
+                    <textarea matInput
+                    name="qualification"
+                    [(ngModel)]="qualification"
+                     placeholder="Btech,Mtech Etc."
+                     disabled>
+                   
+                </textarea>
+
+            
+                    </mat-form-field>
+            </div>
+        </div>
+        <div class="row" *ngIf="role==='Faculty'">
+            <div class="col-md-3">
+                <label for="teachDept" class="mr-sm-2"><h5>Teaching Department:</h5></label>
+            </div>
+
+            <div class="col-md-9">
+
+            <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-select 
+                [(ngModel)]="teachingDept"
+                 name="teachingDept"
+                  placeholder="Plese select your teching Department" 
+                  disabled>
+                  <mat-option *ngFor="let department of Departments" [value]="department">
+                    {{department}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> 
+        </div>
+
+        <div class="row" *ngIf="role==='Faculty'">
+            <div class="col-md-3">
+                <label for="subTeach" class="mr-sm-2"><h5>Subject You Teach:</h5></label>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field style="width: 100%;">
+                    
+                    <mat-select multiple 
+                    [(ngModel)]="subjectsTeach"
+                     name="subjectsTeach"
+                      disabled>
+                      <mat-option *ngFor="let subject of Subjects" [value]="subject">{{subject}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+
+
+         </div>
+      </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+
+
+.container-fluid
+{
+    padding-top: 20px;
+}
+.guru
+{
+position: relative;
+top:10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+background: rgb(238, 238, 238);
+margin-top: 1rem;
+border-radius: 20px;
+height:6rem;
+}
+
+.guru-image img
+{
+top:0px;
+left:10px;
+width: 4rem;
+position: absolute; 
+}
+.guru-detail
+{
+    position:absolute;
+    top:20px;  
+    width:95%; 
+    left:5.4rem;
+}
+.gurus_con_sort
+{
+    box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.3);
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+.gurus_content
+{
+    padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+    background: rgb(249, 249, 249);
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+.full-row {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    background: rgb(238, 238, 238);
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+select {
+    border: #26b16d;
+    border-radius: 16px;
+    float: right;
+}
+
+.fas {
+    color: #26b16d;
+}
+
+.subject-code
+{
+   
+    width:100px;
+    height:110px;
+    padding: 1rem;
+    /* background-color: red; */
+}
+
+
+.container
+{
+    background-color: rgb(218,207,188);
+    border-radius: 12px;
+}
+.subject_header
+{
+    position: relative;
+    background-color:rgb(51,172,148);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+/*Snackbar position */
+::ng-deep snack-bar-container.position {
+    margin-top: 3.7rem;
+  }

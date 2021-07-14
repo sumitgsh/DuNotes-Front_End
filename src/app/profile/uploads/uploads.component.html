@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row full-row mb-3">
+        <div class="col-md-8 col-8">
+
+            <h1 style="margin-left: 1rem;">Uploads</h1>
+        </div>
+        <div class="col-md-4 col-4 mt-2">
+            <span style="display: inline-block; padding: 7px;margin: 0 0 0 3rem;">Sort By:</span>
+            <select class="custom-select w-50" name="Sort_By" (click)="sortData($event.target.value)">
+                <option 
+                  value="0" >Paper-Year</option>
+                  <option 
+                  value="1" >All</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+          </select>
+        </div>
+    </div>
+    <div class="box">
+        <div class="row mb-2" *ngIf="dataAvailable;else noData" >
+
+            <div class="col-md-6 mb-2" *ngFor="let data of updataData">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-right"><a routerLink="/paper-details/{{data.id}}"><span class="fas fa-edit"></span></a></h4>
+                        <h5>Subject: {{data.subject}}</h5>
+                        <h5>Topic: {{data.user}}</h5>
+                        <h5>Description: {{data.description}}</h5>
+                        <h5>Paper-Type:{{data.paperType}}</h5>
+                        <h5>Paper-Year:{{data.paperYear}}</h5>
+                        <h5>Verfied:{{data.verified}}</h5>
+                    </div>
+                </div>
+            </div> 
+           
+        </div>
+        <ng-template #noData>
+            <div class="error-content">
+                <h3><i class="fas fa-bell text-warning"></i> Oops! No uploads yet.</h3>
+           </div>
+        </ng-template>
+      
+    </div>
+</div>

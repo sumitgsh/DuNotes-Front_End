@@ -1,0 +1,127 @@
+
+<div class="container-fluid personal_info" >
+    <div class="row">
+        <div class="col-md-12 personal_info_content">
+
+            <form #personalInfo="ngForm" (ngSubmit)="onSubmitPersonalInfo(personalInfo)">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>PERSONAL INFO</h3> 
+                    </div>
+                    <div class="col-md-4 offset-md-4">
+                       
+                    <button  
+                        class="btn btn-success mb-2 float-right"
+                        style="width:70%;"
+                        (click)="onEditInfo(personalInfo)"
+                        *ngIf="edit" >Edit Info
+                    </button>   
+                        <button type="submit" 
+                        class="btn btn-success mb-2 float-right"
+                        style="width:70%;"
+                        *ngIf="save"
+                        >Save</button> 
+                        
+                    </div>
+                </div>
+                
+               
+                <div class="personal_info_cont">
+                 <div class="row">
+                <div class="col-md-3">
+                    <label for="firstName" class="mr-sm-2"><h5>First Name:</h5></label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" class="form-control mb-2 mr-sm-2"
+                     placeholder="Please provide Institute"
+                       name="firstName"
+                     [(ngModel)]="user.firstName"
+                     disabled>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="lastName" class="mr-sm-2"><h5>Last Name:</h5></label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" class="form-control mb-2 mr-sm-2"
+                     placeholder="Please provide Institute"
+                       name="lastName"
+                     [(ngModel)]="user.lastName"
+                     disabled>
+                </div>
+            </div>
+                
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="mobile" class="mr-sm-2"><h5>Mobile:</h5></label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" 
+                    class="form-control mb-2 mr-sm-2"
+                     placeholder="Please provide Mobile no.:"
+                      name="phoneNo"
+                     [(ngModel)]="user.phoneNo"
+                     disabled>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="email" ><h5>Email:</h5></label>
+                </div>
+                <div class="col-md-9">
+                    <input type="email"
+                     class="form-control mb-2 mr-sm-2" 
+                     placeholder="Please provide email"
+                       name="email"
+                      [(ngModel)]="user.email"
+                      disabled>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="role" class="mr-sm-2"><h5>Role:</h5></label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" class="form-control mb-2 mr-sm-2"
+                      id="role"
+                      name="role"
+                      [(ngModel)]="user.role"
+                      disabled>
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="profileActive" class="mr-sm-2"><h5>Active Since:</h5> </label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text"
+                     class="form-control mb-2 mr-sm-2"
+                       id="regsiterDate"
+                       name="registerDate"
+                       [(ngModel)]="user.registerDate"
+                       disabled>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="coordinator" class="mr-sm-2"><h5>Co-ordinator:</h5> </label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text"
+                     class="form-control mb-2 mr-sm-2"
+                       id=""
+                       name="coordinator"
+                       [(ngModel)]="user.coordinator"
+                       disabled>
+                </div>
+            </div>
+
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>

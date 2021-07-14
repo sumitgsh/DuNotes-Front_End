@@ -1,0 +1,12 @@
+#gurus img {
+    margin-top: -50px;
+}
+
+#gurus .card:hover {
+    background: rgb(35, 194, 171);
+    color: white;
+}
+#gurus .card{
+
+    border: 1px solid rgba(126, 213, 111, 0.8);
+}

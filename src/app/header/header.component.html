@@ -1,0 +1,120 @@
+
+<nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top">
+  <div class="container-fluid">
+      <a href="" class="navbar-brand">
+         <img src="../../assets/images/logo-2.png" alt="logo"> 
+          <span class="nav-logo-content">
+              <!-- <b class="text-muted">The Logo</b> -->
+          </span>
+      </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <!--Navbar Links-->
+  <div  id="navbarResponsive" class="collapse navbar-collapse ">
+      <ul class="navbar-nav ml-auto">
+           <li class="nav-item">
+              <a class="nav-link text-white text-primary hvr-underline-reveal"
+               routerLink=''
+               >Home <span class="sr-only">(current)</span></a>
+           </li>
+
+           <!-- Explore -->
+         <li class="nav-item dropdown">
+          <a class="nav-link text-white" type="button" >Explore<i class="fa fa-chevron-down hvr-icon p-1"></i></a>
+          <ul>
+            <h4 class="text-white text-center">Departments</h4>
+            <li class="py-2" *ngFor="let depart of departments">
+              <a routerLink='/department/{{depart}}/all/all/all/all' style="text-decoration: none; color:rgb(39,167,69);">
+              <i class="fa fa-chevron-right hvr-icon pr-4"></i>{{depart}}
+            </a>
+            <li><br>
+              
+            </ul>
+          
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white  hvr-underline-reveal"
+           routerLink='/upload'>Upload</a>
+        </li>
+
+           <li class="nav-item">
+              <a class="nav-link text-white  hvr-underline-reveal"
+                routerLink='/gurus'
+                >Gurus</a>
+           </li>
+           
+           <li class="nav-item">
+            <a class="nav-link text-white hvr-underline-reveal" 
+            routerLink="/e-learning">E-learning Platforms</a>
+         </li>
+         
+           <li class="nav-item">
+              <a class="nav-link  text-white hvr-underline-reveal" 
+              (click)="question()"
+              >Ask a Question</a>
+           </li>
+
+
+         <li>
+
+        
+         <form class="form-inline">
+          <div class="navSearch">
+
+         <ng-autocomplete 
+                [data]="data"
+                [searchKeyword]="keyword"
+                (selected)='selectEvent($event)'
+                (inputChanged)='onChangeSearch($event)'
+                (inputFocused)='onFocused($event)'
+                [itemTemplate]="itemTemplate"
+                [placeholder]="dept"
+                [notFoundTemplate]="notFoundTemplate">                                 
+              </ng-autocomplete>
+              
+              <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.name"></a>
+              </ng-template>
+              
+              <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+        </ng-template>
+
+
+          <button class="btn btn-success"
+            type="submit"
+            style="border-radius:20px;"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </form>
+         </li>
+         <li class="nav-item" *ngIf="!login">
+          <a class="nav-link text-white hvr-underline-reveal"
+           routerLink="login" >LogIn/Register</a>
+       </li>
+      
+       <li>
+        <div class="dropdown profile-menu" *ngIf="login">
+          <button type="button" class="btn btn-primary dropdown-toggle profile-menu-button" data-toggle="dropdown">
+            {{userName}}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item hvr-sweep-to-right" routerLink="/profile/uploads"><span class="fas fa-user fa-border mr-3 rounded-circle"></span>Profile</a>
+            <a class="dropdown-item hvr-sweep-to-right" routerLink="/account-settings/personal_info"><span class="fa fa-cog fa-border mr-3 rounded-circle"></span>Manage Account</a>
+            <a class="dropdown-item hvr-sweep-to-right" (click)="onLogout()" style="cursor:pointer;">
+              <span class="fa fa-sign-out border mr-3 rounded-circle" style="padding:3.2px;"></span>Logout</a>
+          </div>
+        </div>
+       </li>
+      </ul>
+  </div>
+  </div>
+</nav>
+
+
+
+
+
+
+

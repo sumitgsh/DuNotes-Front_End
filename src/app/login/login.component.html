@@ -1,0 +1,58 @@
+<div class="conatiner-fluid registerContent">
+
+    <div class="row d-flex justify-content-center loginHeader">
+        <a class="navbar-brand" href="#">
+            <img style="width:200px;height: 80px;" src="../../assets/images/logo.jpg" alt="logo"></a>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3 class="text-center p-4">Login to the 
+
+                <a class="navbar-brand" 
+                href="#">
+              
+                <img src="../../assets/images/logo-2.png" alt="logo" style="background-color: rgb(52,58,64);padding: .8rem;border-radius: 36px;"> 
+                </a>
+            </h3>
+            <div class="social-link row p-3">
+                <div class="col-6" style="border-right: 1px solid grey;">
+                    <a class="btn pr-2 google text-center" style="background-color:#DB4437; ">Google</a>
+                </div>
+                <div class="col-6">
+                    <a class="btn pl-2 facebook text-center" style="background-color:#4267B2;">Facebook</a>
+                </div>
+                <div class="col-md-2 offset-md-5 p-2 text-center display-5">
+                    <span>(</span>OR<span>)</span>
+                </div>
+            </div>
+            <form #login="ngForm" (ngSubmit)="onSubmit(login)">
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>UserName</mat-label>
+                    <input matInput [(ngModel)]="uname" name="userName" placeholder="User Name">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password*</mat-label>
+                    <input matInput [(ngModel)]="password" name="password" placeholder="Password">
+                </mat-form-field>
+
+                <div class="row py-4">
+                    <div class="col-lg-8" style="padding-left: 0;">
+                        <a>Forget Your Password?</a><br>
+                        <h6>Don't have an account?
+                            <a routerLink="/register">Register</a></h6>
+                    </div>
+                    <div class="col-lg-4">
+                        <button mat-raised-button class="btn btn-success">Sign In</button>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+<!--Loading Spinner-->
+<div class="contianer-fluid">
+  <div class="row d-flex justify-content-center">
+    <app-loading-spinner style="margin-top: 10rem;background-color: rgb(158,158,158);border-radius: 16px;" *ngIf="isLoading"></app-loading-spinner>
+  </div>
+</div>
+
+<div *ngIf="!isLoading" class="conatiner-fluid registerContent" style="margin-top: 4rem;">
+
+    <div class="row d-flex justify-content-center" >
+      <span style="position: relative;
+      top: 25px;
+      padding-right: 20px;
+      font-size: 1.8rem;">  Register To</span>
+    <a class="navbar-brand" 
+    href="#">
+  
+    <img src="../../assets/images/logo-2.png" alt="logo" style="background-color: rgb(52,58,64);padding: .8rem;border-radius: 36px;"> 
+    </a>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form (ngSubmit)="onRegister(register)"  #register="ngForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="firstName"
+             name="firstName" placeholder="First Name"
+              required>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="lastName"
+             name="lastName" 
+              placeholder="Last Name" 
+              required >
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>User Name</mat-label>
+            <input matInput [(ngModel)]="userName"
+             name="userName" placeholder="User Name"
+              required>
+          </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+               <input matInput
+                [errorStateMatcher]="matcher"
+               [(ngModel)]="email"
+                name="email"
+                placeholder="Ex. pat@example.com" >
+                
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Phone No.</mat-label>
+        <input matInput 
+        [(ngModel)]="phoneNo" 
+        name="phoneNo"
+        type="text"
+        minlength="10" 
+        maxlength="10"  
+        placeholder="Phone No." 
+        [pattern]="'[789][0-9]{9}'"
+        required> 
+        <mat-icon matSuffix>phone</mat-icon>
+
+        <mat-error *ngIf="register.controls['phoneNo']?.touched && register.controls['phoneNo']?.errors">
+          Enter a Valid no!</mat-error>           
+      </mat-form-field>
+
+      
+
+      <mat-form-field appearance="" class="example-full-width">
+        <mat-label>Enter your password</mat-label>
+
+
+        <input matInput [(ngModel)]="psd"
+         name="password" [type]="hide ? 'password' : 'text'" required
+         minlength="6" #password>
+         <mat-hint>Minimum 6 characters {{password.value?.length || 0}}/6</mat-hint>
+        <button  type ="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+       <mat-radio-group [(ngModel)]="role"
+        name="role" 
+        class="d-flex justify-content-center"
+        required >
+        <mat-radio-button class="example-margin px-3" value="0">Student</mat-radio-button>
+        <mat-radio-button class="example-margin" value="1">Faculty</mat-radio-button>
+      </mat-radio-group>
+        <div class="row">
+            <label class="d-flex ">
+                <div>
+                    <h5 class="px-3 pt-1"> Note:</h5>
+                </div>
+                <div>
+                    <h6>Only Dibrugarh University Students ,Faculty has to provide Id.If you are
+                         from different college please skip the below field.
+                         </h6>
+                </div>  
+            </label>
+        </div>
+
+        
+      <mat-form-field class="example-full-width">
+        <mat-label>Dibrugarh University Id No.</mat-label>
+        <input matInput [(ngModel)]=" college_Id_No"
+        [pattern]="'[0-9][0-9][A-Za-z]+[0-9][0-9]'"
+         name="college_Id_No" 
+          placeholder="Dibrugarh University Id No." >
+      </mat-form-field>
+      <div class="row d-flex justify-content-center">
+      <mat-checkbox [(ngModel)]="checked" name="checkbox" required>I accept all the terms and conditions</mat-checkbox>
+      </div>
+
+        <div class="row d-flex">
+            <div class="col-lg-8" style="padding-left: 0;">
+                Already have an Account?<a routerLink="/login">Login</a>
+            </div>
+            <div class="col-lg-4"> 
+            <button mat-raised-button class="btn btn-success float-right subbtn"
+            [disabled]="!register.valid"
+            >Register</button>
+            </div>
+        </div>
+
+
+    </form>
+
+        </div>
+      </div>
+    </div>

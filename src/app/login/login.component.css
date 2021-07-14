@@ -1,0 +1,42 @@
+.row {
+    margin-left: 0;
+    margin-right: 0;
+    
+}
+
+.example-full-width {
+    width: 100%;
+  }
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  /*password eye*/
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  .btn
+  {
+    border-radius: 30px;
+    width:100%;
+  }
+  form
+  {
+   width: 95%;
+    padding: 0 0 0 2rem;
+  }
+  
+  
+ 

@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="container" style="padding-bottom: 5rem;">
+        <div class="row">
+            <div class="col-lg-4 image">
+                <div class="row Subject_header">
+                    <div class="col-md-9 col-10">
+                        <h4>Subject:<span style="font-size: 16px;"> {{subjects.subject|subjectShort}}</span></h4>
+                    </div>
+                    <div class="col-md-3 col-2">
+                        <div class="badge">
+                            <div class="blue-tick">
+                              <span>
+                              <i class="fa fa-check"></i>
+                              </span>
+                            </div>
+                              <div class="badge-body">
+                                  <div>
+                                  Verified
+                                  </div>
+                             </div>
+                        </div> 
+                    </div>     
+             </div>
+                <div class="container">
+                   <div class="row">
+                       <div class="col-md-4">
+                          <button class="btn btn-outline-secondary mb-1" (click)="viewFile()"><span class="fas fa-book-open"></span> View</button>
+                         </div>
+            
+                    <div class="col-md-8">
+                        <form>
+                            <span>Avg. Rating:{{rate}}</span>
+                            <div class="rating float-right">
+                                <input id="star5" name="star" 
+                                 (click)="Rating(5)"  
+                                  type="radio" 
+                                  value="star"
+                                   class="radio-btn hide" />
+                                <label for="star5">☆</label>
+
+                                <input id="star4" name="star"
+                                   type="radio"
+                                   (click)="Rating(4)"  
+                                    value="4" class="radio-btn hide" />
+                                <label for="star4">☆</label>
+
+                                <input id="star3"
+                                 name="star"
+                                  
+                                 (click)="Rating(3)" 
+                                   type="radio" value="3" class="radio-btn hide" />
+                                <label for="star3">☆</label>
+
+                                <input id="star2" name="star" 
+                                 type="radio"
+                                  (click)="Rating(2)" 
+                                value="2" class="radio-btn hide" />
+                                <label for="star2">☆</label>
+
+                                <input id="star1" name="star"
+                                   (click)="Rating(1)" 
+                                   type="radio" value="1" class="radio-btn hide" />
+                                <label for="star1">☆</label>
+
+                                <div class="clear"></div>
+                            </div>
+                        </form>
+                    
+                    </div>
+                </div>
+             </div>
+                <div id="kal">
+                    <img src="../../../assets/images/Paper-notes.svg" alt="Notes">
+                </div>
+                <div class="mt-1">
+                    <button class="btn btn-outline-success btn-lg" (click)="downloadFile()"><span class="far fa-arrow-alt-circle-down"></span> Download</button>
+                </div>
+            </div>
+            <div class="col-lg-6" style="margin-top: 5rem;">
+                <div class="card details" style="height: 60vh;">
+                    <div class="card-body paperDet">
+                        <h5 class="p-3"><span>Topic:</span>{{subjects.topic}}</h5>
+                        <h5 class="p-3"><span>Description:</span>{{subjects.description}}</h5>
+                        <h5 class="p-3"><span>Paper Year:</span>{{subjects.paperYear}}</h5>
+                        <h5 class="p-3"><span>Date Of Upload:</span>{{subjects.dateOfUpload}}</h5>
+                        <h5 class="p-3"><span>Uploaded By:</span>{{subjects.user}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

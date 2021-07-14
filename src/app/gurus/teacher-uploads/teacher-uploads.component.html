@@ -1,0 +1,88 @@
+
+<!-- 
+    *Image+name
+    *Sort By
+    *Show the corresponding data
+
+-->
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="guru">
+               
+                    <div class="guru-image">
+                          <img class="img-fluid rounded-circle mb-3" src="../assets/images/person1.jpg">
+                    </div>
+                    <div class="guru-detail">
+                        <div class="d-flex justify-content-md-between">
+                            <h4>Name:{{facultyData.firstName}} {{facultyData.lastName}}</h4>
+                            <button *ngIf="!isSubscribed" class="btn btn-danger" style="width:12rem;margin:0px 2rem" (click)="subscribeFac()" >
+                                SUBSCRIBE
+                            </button>
+                            <button *ngIf="isSubscribed" class="btn btn-danger" style="width:12rem;margin:0px 2rem" (click)="unSubscribe()" >
+                            UN-SUBSCRIBE
+                            </button>
+                       </div>    
+                      
+                        <h2>Followers:{{activeFollowers}}</h2>
+                        
+                    </div>
+                
+            </div>
+        </div>   
+    </div>
+</div>
+<!--Sort panel for the gurus section-->
+<div class="container-fluid ">
+    <div class="gurus_content">
+    <div class="row full-row mb-3 mx-auto gurus_con_sort">
+        <div class="col-md-8 col-8">
+
+            <h1 style="margin-left: 1rem;">Uploads by {{facultyData.firstName}}</h1>
+        </div>
+        <div class="col-md-4 col-4 mt-2">
+            <select class="custom-select w-50" name="Sort_By">
+                <option value="" >Sort By</option>
+                <option>Popular</option>
+                <option>Recent Uploads</option>
+                <option>4</option>
+                <option>5</option>
+          </select>
+        </div>
+    </div>
+
+<!--Subjects uploads By the guru-->
+<div class="row" *ngIf="!isEmpty;else noData">
+    <div class="col-md-6 subject_content mb-2" *ngFor="let content of selectedfacUploadData">
+        <div class="container" style="padding:0;">
+            <a style="cursor: pointer;text-decoration: none;" [routerLink]="['/paper-details',content.id]">
+                <div class="row subject mx-auto ">
+                    <div class="col-md-4 col-4 p-2 text-center  subject_header">
+                        <div class="subject-code">
+                            <div style="font-size: 2rem;color:#290b5f;text-transform: uppercase;">{{content.degreeName}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-8 py-2 sub-content">
+                        <h6><span>Subject:</span>{{content.subject}}</h6>
+                        <div><span>Paper Year:</span>{{content.paperYear}}</div>
+                        <div><span>Paper Type:</span>{{content.paperType}}</div>
+                        <div><span>Semester:</span>{{content.semester}}-Semester</div>
+                        <div><span>Uploaded By:</span>{{content.user}}</div>
+                    </div>
+                </div>
+            </a> 
+        </div>
+    </div>
+  
+</div>
+
+<ng-template #noData>
+    <div class="error-content">
+        <h3><i class="fas fa-bell text-warning"></i> Oops! No uploads By the faculty yet .</h3>
+        <h4>Subscribe to the faculty for receiving latest resources!!</h4>
+   </div>
+</ng-template>
+
+</div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container-fluid" style="margin-top: 30px;">
+    <div class="row">
+        <div class="col-md-3 media1" style="background: rgba(218, 216, 216, 0.438); height: 90vh;">
+
+            <div class="side-navbar">
+                <ul class="list-unstyled" style="margin-top: 20px;margin-left: .5rem;font-size: larger;">
+                    <li class="p-1">
+                        <a [routerLink]="['uploads']" style="cursor: pointer;"><span class="fas fa-upload fa-border"></span> Uploads</a>
+                    </li>
+                    <li class="p-1">
+                        <a [routerLink]="['subscription']" style="cursor: pointer;"><span class="far fa-newspaper fa-border"></span> Subscription</a>
+                    </li>
+                    <li class="p-1">
+                        <a [routerLink]="['about']" style="cursor: pointer;"><span class="fas fa-users fa-border"></span> About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <hr style="background-color: #ff0000;height: 3px;width:100%;">
+        <div class="col-md-2 ml-auto align-self-center" style="max-width: 115px;">
+            <div class="text-primary">
+                <h4>Sort by:</h4>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-6">
+            <select class="custom-select" name="sort_by" [(ngModel)]="sort_by">
+                <option selected>popular</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <hr style="background-color: #ff0000;height: 3px;width:100%;">
+
+    </div>
+    <div class="row">
+        <div class="col-md-6 subject_content mb-2" *ngFor="let content of subjects">
+            <div class="container" style="padding:0;">
+                <a style="cursor: pointer;text-decoration: none;" [routerLink]="['/paper-details',content.id]">
+                    <div class="row subject mx-auto ">
+                        <div class="col-md-4 col-4 p-2 text-center  subject_header">
+                            <div class="subject-code">
+                                <div style="font-size: 2rem;color:#290b5f;text-transform: uppercase;">{{content.degreeName}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-8 py-2 sub-content">
+                            <h6><span>Subject:</span>{{content.subject}}</h6>
+                            <div><span>Paper Year:</span>{{content.paperYear}}</div>
+                            <div><span>Paper Type:</span>{{content.paperType}}</div>
+                            <div><span>Semester:</span>{{content.semester}}-Semester</div>
+                            <div><span>Uploaded By:</span>{{content.user}}</div>
+                        </div>
+                    </div>
+                </a> 
+            </div>
+        </div>
+    </div>
+</div>

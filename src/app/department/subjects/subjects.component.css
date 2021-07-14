@@ -1,0 +1,42 @@
+
+
+.subject-code
+{
+   
+    
+    height:110px;
+    padding: 1.8rem;
+    /* background-color: red; */
+}
+
+
+.container
+{
+    background-color: rgb(218,207,188);
+    border-radius: 12px;
+}
+.container:hover{
+    opacity: 0.6;
+    transition: 1s;
+    box-shadow: -3px 0px #290b5f;
+}
+
+
+.subject_header
+{
+    position: relative;
+    background-color:rgb(51,172,148);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+.sub-content > div
+{
+    font-size: 13px;
+}
+.sub-content span
+{
+    color:#290b5f;
+    text-transform: uppercase;
+    padding:4px;
+}
+

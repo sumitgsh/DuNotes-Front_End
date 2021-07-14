@@ -1,0 +1,26 @@
+#gurus img {
+    margin-top: -50px;
+}
+
+
+#gurus .card{
+
+    border: 1px solid rgba(126, 213, 111, 0.8);
+}
+.logo
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    height: 27%;
+    width: 39%;
+    border: 12px solid #4caf50db;
+}
+
+
+.card-container:hover
+{
+
+    border-color:rgb(24, 77, 69)!important;
+}

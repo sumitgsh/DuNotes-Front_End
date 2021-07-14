@@ -1,0 +1,291 @@
+<!--file upload-->
+<!--form ka andar -->
+<!--modal1 + modal2+save(upload)+(suceefull message)-->
+<!--modal2 //optional-->
+
+<!-- Upload -->
+<div class="conatiner-fluid  mt-5 py-5">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="container" appDnd (fileDropped)="onFileDropped($event)" style="height: 50vh;">
+                <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+                <img src="../assets/images/ic-upload-file.svg" alt="" class="mb-2">
+                <h3>Drag and drop file here</h3>
+                <h3>or</h3>
+                <label for="fileDropRef">Browse for file</label>
+
+            </div>
+
+            <!-- Next Button -->
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-success"
+                         data-toggle="modal"
+                          data-target="#myModal1" 
+                          style="width:8rem;border-radius: 18px;"
+                           [disabled]="!fileNext"
+                           >Next</button>
+                    </div>
+                </div>
+            </div>
+            <!--SnackBar-->
+
+            <!-- [hidden]="mediaForm" -->
+            <!-- Modal 1 -->
+            <div class="modal fade"  id="myModal1" tabindex="-1" data-backdrop="true" role="dialog" data-keyboard="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Media Information</h4>
+                            <span style="    margin-left: 5rem;
+                            padding: 7px;
+                            font-size: 13px;
+                            color: red;">*-mark fields are required</span>
+                            <button type="button" #closeModal class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Material Type:</h5>
+                            <form #mediaUpload="ngForm" (ngSubmit)="media(mediaUpload)">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label" for="radio1">
+                                    <input type="radio" class="form-check-input" id="radio1" name="paperType" value="QuestionPaper" checked [(ngModel)]="paperType">QP (Question Paper)
+                                  </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label" for="radio2">
+                                    <input type="radio" class="form-check-input" id="radio2" name="paperType" value="Notes" [(ngModel)]="paperType">Notes
+                                  </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" id="radio3" name="paperType" value="QPS" [(ngModel)]="paperType">QPs (Question Paper Solution)
+                                  </label>
+                                </div>
+                                <div class="form-check-inline ">
+                                    <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" id="radio4" name="paperType" value="PYQ" [(ngModel)]="paperType">(PYQ)Previous Year Questions
+                                  </label>
+                                </div>
+                                <div class="form-check-inline ">
+                                    <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" id="radio5" name="paperType" value="practical" [(ngModel)]="paperType">Practical
+                                  </label>
+                                </div>
+
+                                <!-- Description of Upload -->
+
+                                <!--Department Data -->
+                                <div class="form-group">
+                                    <label ><b>Department*</b></label>
+                                    <select class="custom-select" 
+                                     name="department" 
+                                     [(ngModel)]="department"
+                                     (change)="filterProgramme($event.target.value)"
+                                      required>
+                                        <option value="0"  disabled selected>
+                                            --Select Department--
+                                          </option>
+                                    <option *ngFor="let department of departmentData;" value="{{department}}">
+                                        {{department}}
+                                    </option>
+                                    </select>
+                                </div>
+
+                                <!--Specialization /Programme Data-->
+
+                                <div class="form-group">
+                                    <label ><b>Specialization/Programme Name*</b></label>
+                                    <select class="custom-select"
+                                      name="degreeName" 
+                                      [(ngModel)]="degreeName"
+                                      (change)="filterSemester($event.target.value)"
+                                       required>
+                                        <option value="0" hidden disabled selected>
+                                            --Select Programme--
+                                          </option>
+                                    <option *ngFor="let obj of programmeData;" value="{{obj.shortName}}">
+                                        {{obj.degreeName}}
+                                    </option>
+                                    </select>
+                                   </div>
+
+                                   
+                                 <!--Semester display as per selected programme-->  
+
+                                <div class="form-group">
+                                    <label ><b>Semester It belongs*</b></label>
+                                    <select class="custom-select"
+                                     [(ngModel)]="Semester"
+                                      name="semester"
+                                      (change)="filterSubject($event.target.value)"
+                                       required>
+                                        <option value="0" selected>
+                                            --Select Semester--
+                                          </option>
+                                          <option  *ngFor="let element of noOfSemArr"
+                                          name="semester" 
+                                          value="{{element}}"
+                                            required>
+                                            {{element}}</option>
+                                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><b>Subject*</b></label>
+                                    <select class="custom-select" 
+                                    [(ngModel)]="subject"
+                                     name="subject" 
+                                     required>
+                                        <option value="0" selected>
+                                            --Select Subject--
+                                          </option>
+                                          <option  *ngFor="let element of subjectData"
+                                          name="subject" 
+                                          value="{{element.subjectName}}"
+                                            required>
+                                            {{element.subjectName}}</option>
+                                        </select>
+                                </div>
+                               
+                             
+                                <div class="form-group">
+                                    <label ><b>Paper Year*</b></label>
+                                    <select class="custom-select"  name="paperYear" [(ngModel)]="paperYear" required>
+                                        <option value="" selected disabled>- Select Paper Year* -</option>
+                                        <option value="2019">2020</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2015">2014</option>
+                                        <option value="2015">2013</option>
+                                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label><b>Topic*</b></label>
+                                    <textarea class="form-control" rows="3" placeholder="topic*" name="topic" [(ngModel)]="topic" placement="top-right" ngbPopover="This is simple example form ItSolutionStuff.com" popoverTitle="Popover on right" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label ><b>Description</b></label>
+                                    <input name="desc" placeholder="Description" class="form-desc form-control input-error" [(ngModel)]="desc" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label ><b>Important Links</b></label>
+                                    <input name="importantLinks" placeholder="Links" class="form-importantLinks form-control input-error" [(ngModel)]="importantLinks" type="text">
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <button type="button" [disabled]="!mediaUpload.valid" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button  type="submit"  class="btn btn-outline-success btn-next">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Progress -->
+            <div class="files-list" style="padding-left: 20.2%;">
+                <div class="single-file" *ngFor="let file of files; let i = index" style="width: 28em;">
+                    <img src="../assets/images/ic-file.svg" width="45px" alt="file">
+                    <div class="info">
+                        <h4 class="name">
+                            {{ file?.name }}
+                        </h4>
+                        <p class="size">
+                            <!-- {{ formatBytes(file?.size) }} -->
+                        </p>
+                        <app-progress [progress]="file?.progress"></app-progress>
+                    </div>
+                    <img src="../assets/images/ic-delete-file.svg" class="delete align-self-center" width="20px" alt="file" (click)="deleteFile(i)">
+                </div>
+            </div>
+
+            <section class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12" style="padding: 3rem !important;">
+                        <div class="card card-primary border border-info p-2">
+                            <div class="card-block text-center">
+                                <p>
+                                    If you face any difficulty uploading your notes, write to us at
+                                    <a class="ms-tag ms-tag-royal" href="">
+                                        mailto:hacksam121@gmail.com
+                        </a> or send your material as an attachment with a mail and we will upload the material for you.
+                                </p>
+                                <p>
+                                   
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-2 border border-warning">
+                <div class="card-body text-center">
+                   <h4><p class="card-text p-4 display-5">Please upload material/notes which do not violate any kind of copyright permission.</p></h4>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" style="background-color: green;">
+                    <h3 class="card-title">Help</h3>
+                </div>
+                <div class="card-body scrollable">
+                    <h4 class="mt-1 color-primary">
+                        1.What can be uploaded?
+                    </h4>
+                    <p>Ans: Any educational content, which you think can be useful to other students or teachers can be uploaded.
+                        <br> You can upload Notes, Questions, Solutions, Case Studies, Lab Manuals, Project Report, Seminar Presentation, Research Papers and anything and everything related to education.</p>
+                    <h4 class="mt-1 color-primary mb-0">
+                        2.What document formats are accepted?
+                    </h4>
+                    <p>
+                        Ans: We accept pdf,jpeg, png and jpg. If you want to upload some other format, please contact us.
+                    </p>
+                    <h4 class="mt-1 color-primary mb-0">
+                        3.How long it takes for the upload to finish?
+                    </h4>
+                    <p>
+                        Ans: It depends on the size and speed of your Internet. It generally takes a maximum of 5 minutes for your document to get online and be available to the world.
+                    </p>
+                    <h4 class="mt-1 color-primary mb-0">
+                        4.What is the approval process and how it works?
+                    </h4>
+                    <p>
+                        Ans: To make sure only clean contents come online at LectureNotes, all uploads go through a small approval process. It usually takes 30 minutes but can take up to 24 hours for approval. If you want immediate approval please contact us.
+                        <br>
+                    </p>
+                    <h4 class="mt-1 color-primary mb-0">
+                        5.My upload is approved but still not visible on the subject page.
+                    </h4>
+                    <p>
+                        Ans: The subject pages use a caching mechanism to speed up the website. It can take up to 24 hours for the cache to be refreshed.
+                    </p>
+                    <h4 class="mt-1 color-primary mb-0">
+                        6.I am not a teacher, can I upload?
+                    </h4>
+                    <p>
+                        Ans: LectureNotes is an educational network, and in a network every member is important. You can upload all your notes and makes it available, for all your friends and other students worldwide.
+                    </p>
+                   
+                    <h4 class="mt-1 color-primary mb-0">
+                        7.I have taken reference from few books, will it be subjected to any legal claims?
+                    </h4>
+                    <p>
+                        Ans: Uploads at LectureNotes are solely for sharing of contents with your students and others for non-commercial purpose and it comes under fair use policy. In our document manager, we have an option to add references.
+                        <br> We suggest you mention all the Book/Article you referred while creating the documents.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>

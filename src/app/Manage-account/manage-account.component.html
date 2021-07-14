@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Header </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 media1" style="background: rgba(218, 216, 216, 0.438); height: 90vh;">
+
+            <div class="side-navbar">
+                <ul class="list-unstyled" style="margin-top: 20px;margin-left: .5rem;font-size: larger;">
+                    <li class="p-1">
+                        <a [routerLink]="['personal_info']" style="cursor: pointer;"><span class="far fa-user fa-border"></span>Personal Info</a>
+                    </li>
+                    <li class="p-1">
+                        <a [routerLink]="['academic_info']" style="cursor: pointer;"><span class="fa fa-file-text-o fa-border"></span> Academic Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    
+</div>
+

@@ -100,4 +100,4 @@
 - Improving Ask a Question Section 
 
 ## Du_Notes Backed Code
-![BackEnd](https://github.com/sumitgsh/DuNotes-Back_End)
+![Go to Back End Code](https://github.com/sumitgsh/DuNotes-Back_End)
